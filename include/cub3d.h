@@ -102,7 +102,7 @@ typedef struct s_data
 
 int				handle_parsing(int	argc, char **argv, t_data *data);
 int				get_fd_in_tab(char *file, t_data *data);
-int				init_data_fd(t_data *data);
+int				get_value_fd(t_data *data);
 
 void			ft_free_all(t_data *data);
 

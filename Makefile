@@ -6,7 +6,7 @@
 #    By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/28 07:06:55 by sben-tay          #+#    #+#              #
-#    Updated: 2024/12/30 15:19:48 by sben-tay         ###   ########.fr        #
+#    Updated: 2024/12/30 15:42:19 by sben-tay         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ BUILD = builder/
 #=================================================__SRC__OF__PROJECT__=============================================================================
 SRC := src/main.c src/ft_free_all.c \
 	$(addprefix $(GNL), get_next_line.c get_next_line_utils.c) \
-	$(addprefix $(PARS), handle_parsing.c get_fd_in_tab.c init_data_fd.c)
+	$(addprefix $(PARS), handle_parsing.c get_fd_in_tab.c get_value_fd.c)
 
 SRC_TEST = test/main.c
 

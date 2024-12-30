@@ -6,7 +6,7 @@
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 06:19:45 by sben-tay          #+#    #+#             */
-/*   Updated: 2024/12/30 15:26:17 by sben-tay         ###   ########.fr       */
+/*   Updated: 2024/12/30 15:42:47 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	handle_parsing(int	argc, char **argv, t_data *data)
 	}
 	if (get_fd_in_tab(argv[1], data) == ERROR)
 		return (ERROR);
-	if (init_data_fd(data) == ERROR)
+	if (get_value_fd(data) == ERROR)
 		return (ERROR);
 	// if (check_valid_key(data) == ERROR)
 		// return (ERROR);
