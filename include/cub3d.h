@@ -15,10 +15,12 @@
 # include <mlx.h>
 # include <stdbool.h>
 
-# include "../external/GNL/include/get_next_line.h"
+# include "get_next_line.h"
 # include "ft_printf.h"
 # include "libft.h"
 
+# define ERROR 1
+# define SUCCESS 0
 
 typedef struct s_img
 {
@@ -71,8 +73,21 @@ typedef struct s_mlx
 	void		*win;
 }				t_mlx;
 
+typedef struct s_parsing
+{
+	char		*no;
+	char		*so;
+	char		*we;
+	char		*ea;
+	char		*c;
+	char		*f;
+	char		**map;
+}				t_parsing;
+
 typedef struct s_data
 {
+	char		**file;
+	t_parsing	parsing;
 	t_wall		wall;
 	t_player	player;
 	t_ray		ray;
@@ -85,7 +100,11 @@ typedef struct s_data
 //                          PARSING							   //
 ////////////////////////////////////////////////////////////////
 
+int				handle_parsing(int	argc, char **argv, t_data *data);
+int				get_fd_in_tab(char *file, t_data *data);
+int				init_data_fd(t_data *data);
 
+void			ft_free_all(t_data *data);
 
 
 # endif

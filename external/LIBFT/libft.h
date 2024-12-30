@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samy <samy@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 04:09:01 by sben-tay          #+#    #+#             */
-/*   Updated: 2024/12/21 05:40:51 by samy             ###   ########.fr       */
+/*   Updated: 2024/12/30 08:48:57 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,21 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+#include <fcntl.h>
+#include <sys/types.h>
+#include <sys/uio.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+
 
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+
+size_t				get_size_file(char *file);
 
 char				**ft_split_envp(char const *s, char c);
 

@@ -6,7 +6,7 @@
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 02:34:55 by sben-tay          #+#    #+#             */
-/*   Updated: 2024/12/28 10:14:52 by sben-tay         ###   ########.fr       */
+/*   Updated: 2024/12/30 06:52:15 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ void	clean_inventaire(t_content	**inventaire)
 	if (last->content && last->content[i] == '\n')
 		i++;
 	clean_node->content = malloc(sizeof(char) * \
-	((ft_strlen(last->content) - i) + 1));
+	((ft_strlen_(last->content) - i) + 1));
 	if (clean_node == NULL)
 		return ;
 	j = 0;

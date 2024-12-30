@@ -6,7 +6,7 @@
 #    By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/28 07:06:55 by sben-tay          #+#    #+#              #
-#    Updated: 2024/12/28 11:23:57 by sben-tay         ###   ########.fr        #
+#    Updated: 2024/12/30 15:19:48 by sben-tay         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,13 +23,15 @@ GNL = ./external/GNL/src/
 DPRINTF = ./external/DPRINTF/
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -lm -g3
-CPPFLAGS = -I./include -I./external/LIBFT -I./external/GNL/include -I./external/DPRINTF -I/usr/include -I$(MLX) -Imlx_linux
-LDFLAGS = -L$(GNL) -L$(LIBFT) -L$(DPRINTF) -L$(MLX) -lmlx -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -lbsd -lft -lftprintf
+CPPFLAGS = -I./include -I./external/LIBFT/ -I./external/GNL/include -I./external/DPRINTF -I/usr/include -I$(MLX) -Imlx_linux
+LDFLAGS = -L$(LIBFT) -lft -L$(DPRINTF) -lftprintf -L$(MLX) -lmlx -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -lbsd
 PARS  = src/parsing/
 BUILD = builder/
 
 #=================================================__SRC__OF__PROJECT__=============================================================================
-SRC := src/main.c
+SRC := src/main.c src/ft_free_all.c \
+	$(addprefix $(GNL), get_next_line.c get_next_line_utils.c) \
+	$(addprefix $(PARS), handle_parsing.c get_fd_in_tab.c init_data_fd.c)
 
 SRC_TEST = test/main.c
 
