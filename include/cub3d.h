@@ -22,56 +22,6 @@
 # define ERROR 1
 # define SUCCESS 0
 
-typedef struct s_img
-{
-	void		*img;
-	char		*addr;
-	int			bits_per_pixel;
-	int			line_length;
-	int			endian;
-	int			width;
-	int			height;
-}				t_img;
-
-typedef struct s_wall
-{
-	t_img		wall_n;
-	t_img		wall_s;
-	t_img		wall_e;
-	t_img		wall_w;
-}				t_wall;	
-
-typedef struct s_player
-{
-	double		x;
-	double		y;
-	double		dir;
-	double		fov;
-}				t_player;
-
-
-typedef struct s_ray
-{
-	double		x;
-	double		y;
-	double		dir;
-	double		dist;
-}				t_ray;
-
-
-typedef struct s_map
-{
-	char		**map;
-	int			width;
-	int			height;
-}				t_map;
-
-
-typedef struct s_mlx
-{
-	void		*mlx;
-	void		*win;
-}				t_mlx;
 
 typedef struct s_parsing
 {
@@ -88,11 +38,6 @@ typedef struct s_data
 {
 	char		**file;
 	t_parsing	parsing;
-	t_wall		wall;
-	t_player	player;
-	t_ray		ray;
-	t_map		map;
-	t_mlx		mlx;
 }				t_data;
 
 
@@ -103,6 +48,17 @@ typedef struct s_data
 int				handle_parsing(int	argc, char **argv, t_data *data);
 int				get_fd_in_tab(char *file, t_data *data);
 int				get_value_fd(t_data *data);
+int				check_valid_fd(t_data *data);
+int				check_C(t_data *data);
+int				check_F(t_data *data);
+int				check_EA(t_data *data);
+int				check_WE(t_data *data);
+int				check_SO(t_data *data);
+int				check_NO(t_data *data);
+int				check_map(t_data *data);
+int				check_format_rgb(char *str);
+int				check_double_param(t_data *data);
+bool			valid_char(char c);
 
 void			ft_free_all(t_data *data);
 
