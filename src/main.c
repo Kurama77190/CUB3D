@@ -6,7 +6,7 @@
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 07:00:38 by sben-tay          #+#    #+#             */
-/*   Updated: 2025/01/03 18:59:03 by sben-tay         ###   ########.fr       */
+/*   Updated: 2025/01/03 19:01:16 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,6 @@ int main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	}
 	print_tab(data.parsing.map);
-	// int i = 0;
-	// while (data.parsing.map[i])
-	// {
-	// 	printf("%s", data.parsing.map[i]);
-	// 	i++;
-	// }
 	printf("parsing done\n");
 	ft_free_all(&data);
 	return (0);
