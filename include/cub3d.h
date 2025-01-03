@@ -1,5 +1,5 @@
-#ifndef	CUB4D_H
-# define CUB4D_H
+#ifndef	CUB3D_H
+# define CUB3D_H
 
 # include <fcntl.h>
 # include <X11/X.h>
