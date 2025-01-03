@@ -6,7 +6,7 @@
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 15:12:25 by sben-tay          #+#    #+#             */
-/*   Updated: 2025/01/01 16:11:49 by sben-tay         ###   ########.fr       */
+/*   Updated: 2025/01/03 18:38:26 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,13 @@ int	check_double_param(t_data *data)
 	while (data->file[i])
 	{
 		j = 0;
-		while (data->file[i][j] && ft_isspace(data->file[i][j]))
+		while (data->file[i] && ft_isspace(data->file[i][j]))
 			j++;
 		if (dejavu[(unsigned char)data->file[i][j]])
+		{
 			return (ft_putstr_fd("Error\nCUB3D : double param detected!\n", 2), \
 				ERROR);
+		}
 		if (update_dejavu(data->file, i, j, dejavu) == ERROR)
 			return (ERROR);
 		i++;
@@ -43,7 +45,9 @@ static int	update_dejavu(char **file, int i, int j, bool *dejavu)
 	else if (file[i][j] == 'S' && file[i][j + 1] == 'O')
 		dejavu['S'] = true;
 	else if (file[i][j] == 'W' && file[i][j + 1] == 'E')
+	{
 		dejavu['W'] = true;
+	}
 	else if (file[i][j] == 'E' && file[i][j + 1] == 'A')
 		dejavu['E'] = true;
 	else if (file[i][j] == 'F' && file[i][j + 1] == ' ')

@@ -32,6 +32,11 @@ typedef struct s_parsing
 	char		*c;
 	char		*f;
 	char		**map;
+	char		*height_maps;
+	char		*lenth_maps;
+	int			pos_x;
+	int			pos_y;
+	char		direction;
 }				t_parsing;
 
 typedef struct s_data
@@ -47,6 +52,7 @@ typedef struct s_data
 
 int				handle_parsing(int	argc, char **argv, t_data *data);
 int				get_fd_in_tab(char *file, t_data *data);
+int				get_map_in_tab(t_data *data);
 int				get_value_fd(t_data *data);
 int				check_valid_fd(t_data *data);
 int				check_C(t_data *data);

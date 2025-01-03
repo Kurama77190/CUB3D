@@ -6,7 +6,7 @@
 #    By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/28 07:06:55 by sben-tay          #+#    #+#              #
-#    Updated: 2025/01/01 16:38:00 by sben-tay         ###   ########.fr        #
+#    Updated: 2025/01/03 17:42:28 by sben-tay         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ LIBFT = ./external/LIBFT/
 GNL = ./external/GNL/src/
 DPRINTF = ./external/DPRINTF/
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -lm -g3
+CFLAGS = -Wall -Wextra -Werror -g3
 CPPFLAGS = -I./include -I./external/LIBFT/ -I./external/GNL/include -I./external/DPRINTF -I/usr/include -I$(MLX) -Imlx_linux
 LDFLAGS = -L$(LIBFT) -lft -L$(DPRINTF) -lftprintf -L$(MLX) -lmlx -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -lbsd
 PARS  = src/parsing/
