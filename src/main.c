@@ -6,7 +6,7 @@
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 07:00:38 by sben-tay          #+#    #+#             */
-/*   Updated: 2025/01/04 05:04:09 by sben-tay         ###   ########.fr       */
+/*   Updated: 2025/01/04 05:50:38 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,15 @@ void	print_value_fd(t_data *data)
 	printf("SO: %s\n", data->parsing.so);
 	printf("WE: %s\n", data->parsing.we);
 	printf("EA: %s\n", data->parsing.ea);
-	printf("C: %s\n", data->parsing.c);
-	printf("F: %s\n", data->parsing.f);
+	// printf("C: %s\n", data->parsing.c);
+	// printf("F: %s\n", data->parsing.f);
+	printf("r_c: %d\n", data->parsing.r_c);
+	printf("g_c: %d\n", data->parsing.g_c);
+	printf("b_c: %d\n", data->parsing.b_c);
+	printf("\n");
+	printf("r_f: %d\n", data->parsing.r_f);
+	printf("g_f: %d\n", data->parsing.g_f);
+	printf("b_f: %d\n", data->parsing.b_f);
 	// printf("pos_x: %d\n", data->parsing.pos_x);
 	// printf("pos_y: %d\n", data->parsing.pos_y);
 	// printf("direction: %s\n", data->parsing.direction);

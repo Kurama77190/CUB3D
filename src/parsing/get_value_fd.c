@@ -6,27 +6,37 @@
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 12:54:39 by sben-tay          #+#    #+#             */
-/*   Updated: 2025/01/04 04:27:40 by sben-tay         ###   ########.fr       */
+/*   Updated: 2025/01/04 05:58:31 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	get_rgb(t_data *data, char *line);
+static int	get_rgb(t_data *data, char *line, char **c, char **f);
 static int	get_path_wall(t_data *data, char *line);
+static int	get_int_rgb(t_data *data, char *c, char *f);
 
 int	get_value_fd(t_data *data)
 {
-	int	i;
+	int		i;
+	char	*c_rgb;
+	char	*f_rgb;
 
+	c_rgb = NULL;
+	f_rgb = NULL;
 	i = 0;
 	while (data->file[i])
 	{
-		get_path_wall(data, data->file[i]);
-		get_rgb(data, data->file[i]);
+		if (get_path_wall(data, data->file[i]) == ERROR)
+			return (ERROR);
+		if (get_rgb(data, data->file[i], &c_rgb, &f_rgb) == ERROR)
+			return (ERROR);
 		i++;
 	}
-	i = 0;
+	if (get_int_rgb(data, c_rgb, f_rgb) == ERROR)
+		return (ERROR);
+	ft_free((void **)&f_rgb);
+	ft_free((void **)&c_rgb);
 	return (SUCCESS);
 }
 
@@ -57,22 +67,44 @@ static int	get_path_wall(t_data *data, char *line)
 	return (SUCCESS);
 }
 
-static int	get_rgb(t_data *data, char *line)
+static int	get_rgb(t_data *data, char *line, char **C_RGB, char **F_RGB)
 {
 	int	i;
 
+	(void)data;
 	i = 0;
 	while (line[i] && ft_isspace(line[i]))
 		i++;
 	if (line[i] == 'F')
 	{
-		data->parsing.f = ft_strtrim_space(line + (i + 1));
+		*F_RGB = ft_strtrim_space(line + (i + 1));
 		return (SUCCESS);
 	}
 	else if (line[i] == 'C')
 	{
-		data->parsing.c = ft_strtrim_space(line + (i + 1));
+		*C_RGB = ft_strtrim_space(line + (i + 1));
 		return (SUCCESS);
 	}
+	return (SUCCESS);
+}
+
+static int	get_int_rgb(t_data *data, char *c, char *f)
+{
+	char	**tab;
+
+	tab = ft_split(f, ',');
+	if (!tab)
+		return (ERROR);
+	data->parsing.r_f = ft_atoi(tab[0]);
+	data->parsing.g_f = ft_atoi(tab[1]);
+	data->parsing.b_f = ft_atoi(tab[2]);
+	free_split(tab);
+	tab = ft_split(c, ',');
+	if (!tab)
+		return (ERROR);
+	data->parsing.r_c = ft_atoi(tab[0]);
+	data->parsing.g_c = ft_atoi(tab[1]);
+	data->parsing.b_c = ft_atoi(tab[2]);
+	free_split(tab);
 	return (SUCCESS);
 }

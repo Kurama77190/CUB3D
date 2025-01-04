@@ -29,8 +29,12 @@ typedef struct s_parsing
 	char		*so;
 	char		*we;
 	char		*ea;
-	char		*c;
-	char		*f;
+	int			r_c;
+	int			g_c;
+	int			b_c;
+	int			r_f;
+	int			g_f;
+	int			b_f;
 	char		**map;
 	char		*height_maps;
 	char		*lenth_maps;

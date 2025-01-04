@@ -6,7 +6,7 @@
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 12:49:40 by sben-tay          #+#    #+#             */
-/*   Updated: 2025/01/03 17:42:37 by sben-tay         ###   ########.fr       */
+/*   Updated: 2025/01/04 05:58:48 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ static void	ft_free_parsing(t_data *data)
 	ft_free((void **)&data->parsing.so);
 	ft_free((void **)&data->parsing.we);
 	ft_free((void **)&data->parsing.ea);
-	ft_free((void **)&data->parsing.c);
-	ft_free((void **)&data->parsing.f);
 	free_split(data->parsing.map);
 }
 
