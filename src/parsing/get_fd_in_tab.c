@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pars_fd_cub.c                                      :+:      :+:    :+:   */
+/*   get_fd_in_tab.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 07:37:10 by sben-tay          #+#    #+#             */
-/*   Updated: 2024/12/30 12:52:59 by sben-tay         ###   ########.fr       */
+/*   Updated: 2025/01/04 06:27:44 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	get_file_in_tab(t_data *param, int fd);
 
 int	get_fd_in_tab(char *file, t_data *data)
 {
-	int		fd;
+	int	fd;
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
@@ -47,16 +47,16 @@ static int	alloc_tab_fd(t_data *param, char *file)
 	return (SUCCESS);
 }
 
-static int get_file_in_tab(t_data *param, int fd)
+static int	get_file_in_tab(t_data *param, int fd)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (1)
 	{
 		param->file[i] = get_next_line(fd);
 		if (param->file[i] == NULL)
-			break;
+			break ;
 		i++;
 	}
 	return (SUCCESS);

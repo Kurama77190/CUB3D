@@ -6,7 +6,7 @@
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 09:51:14 by sben-tay          #+#    #+#             */
-/*   Updated: 2025/01/04 05:08:02 by sben-tay         ###   ########.fr       */
+/*   Updated: 2025/01/04 06:27:13 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@ int	check_invalid_param(t_data *data);
 
 int	check_valid_fd(t_data *data)
 {
-	if (check_NO(data) == ERROR)
+	if (check_no(data) == ERROR)
 		return (ERROR);
-	if (check_SO(data) == ERROR)
+	if (check_so(data) == ERROR)
 		return (ERROR);
-	if (check_WE(data) == ERROR)
+	if (check_we(data) == ERROR)
 		return (ERROR);
-	if (check_EA(data) == ERROR)
+	if (check_ea(data) == ERROR)
 		return (ERROR);
-	if (check_F(data) == ERROR)
+	if (check_f(data) == ERROR)
 		return (ERROR);
-	if (check_C(data) == ERROR)
+	if (check_c(data) == ERROR)
 		return (ERROR);
 	if (check_invalid_param(data) == ERROR)
 		return (ERROR);

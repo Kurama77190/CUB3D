@@ -6,13 +6,13 @@
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 10:12:03 by sben-tay          #+#    #+#             */
-/*   Updated: 2025/01/04 05:59:29 by sben-tay         ###   ########.fr       */
+/*   Updated: 2025/01/04 06:32:30 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	check_F(t_data *data)
+int	check_f(t_data *data)
 {
 	int	i;
 	int	j;
@@ -25,11 +25,11 @@ int	check_F(t_data *data)
 			j++;
 		if (data->file[i][j] == 'F')
 		{
-			j ++;
+			j++;
 			while (data->file[i][j] && ft_isspace(data->file[i][j]))
 				j++;
 			if (check_format_rgb(data->file[i] + j) == ERROR)
-				return (ft_putstr_fd("Error\nCUB3D: param F need RGB format\n", \
+				return (ft_putstr_fd("Error\nCUB3D: param F need RGB format\n",
 						2), ERROR);
 			return (SUCCESS);
 		}
@@ -38,7 +38,7 @@ int	check_F(t_data *data)
 	return (ft_putstr_fd("Error\nCUB3D : param F not found.\n", 2), ERROR);
 }
 
-int	check_C(t_data *data)
+int	check_c(t_data *data)
 {
 	int	i;
 	int	j;
@@ -55,7 +55,7 @@ int	check_C(t_data *data)
 			while (data->file[i][j] && ft_isspace(data->file[i][j]))
 				j++;
 			if (check_format_rgb(data->file[i] + j) == ERROR)
-				return (ft_putstr_fd("Error\nCUB3D: param C need RGB format\n", \
+				return (ft_putstr_fd("Error\nCUB3D: param C need RGB format\n",
 						2), ERROR);
 			return (SUCCESS);
 		}
@@ -85,8 +85,9 @@ int	check_map(t_data *data)
 		while (data->file[i][j] && ft_isspace(data->file[i][j]))
 			j++;
 		if (!(valid_char_map(data->file[i] + j)))
-			return (ft_putstr_fd("Error\nCUB3D : Map is missing or not last param\n", \
-				2), ERROR);
+			return (ft_putstr_fd \
+			("Error\nCUB3D : Map is missing or not last param\n", \
+			2), ERROR);
 		i++;
 	}
 	return (SUCCESS);
@@ -117,8 +118,8 @@ int	check_format_rgb(char *str)
 
 int	check_invalid_param(t_data *data)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (data->file[i])
@@ -127,7 +128,7 @@ int	check_invalid_param(t_data *data)
 		while (data->file[i][j] && ft_isspace(data->file[i][j]))
 			j++;
 		if (!valid_char(data->file[i][j]))
-			return (ft_putstr_fd("Error\nCUB3D : Invalid param in file\n", 2), \
+			return (ft_putstr_fd("Error\nCUB3D : Invalid param in file\n", 2),
 				ERROR);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 16:12:18 by sben-tay          #+#    #+#             */
-/*   Updated: 2025/01/03 21:03:42 by sben-tay         ###   ########.fr       */
+/*   Updated: 2025/01/04 06:30:13 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,11 @@ static int	len_map(t_data *data)
 			j++;
 		if (is_char_map(data->file[i][j]))
 		{
-			break;
+			break ;
 		}
 		i++;
 	}
-	while(data->file[i])
+	while (data->file[i])
 	{
 		i++;
 		len++;
@@ -80,7 +80,7 @@ static char	**first_line(t_data *data)
 			j++;
 		if (is_char_map(data->file[i][j]))
 		{
-			break;
+			break ;
 		}
 		i++;
 	}

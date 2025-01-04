@@ -6,7 +6,7 @@
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 09:54:25 by sben-tay          #+#    #+#             */
-/*   Updated: 2025/01/04 03:59:42 by sben-tay         ###   ########.fr       */
+/*   Updated: 2025/01/04 06:26:42 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 bool	valid_char(char c)
 {
-	return (c == 'N' || c == 'S' || c == 'W' || c == 'E' || c == 'F' || c == 'C'
-		|| c == '1' || c == '0' || c == '\n' || c == ' ' || c == '\0');
+	return (c == 'N' || c == 'S' || c == 'W' || c == 'E' || \
+	c == 'F' || c == 'C' || c == '1' || c == '0' || c == '\n' \
+	|| c == ' ' || c == '\0');
 }
 
-int	check_NO(t_data *data)
+int	check_no(t_data *data)
 {
 	int	i;
 	int	j;
@@ -47,7 +48,7 @@ int	check_NO(t_data *data)
 	return (ft_putstr_fd("Error\nCUB3D : param NO not found.\n", 2), ERROR);
 }
 
-int	check_SO(t_data *data)
+int	check_so(t_data *data)
 {
 	int	i;
 	int	j;
@@ -74,7 +75,7 @@ int	check_SO(t_data *data)
 	return (ft_putstr_fd("Error\nCUB3D : param SO not found.\n", 2), ERROR);
 }
 
-int	check_WE(t_data *data)
+int	check_we(t_data *data)
 {
 	int	i;
 	int	j;
@@ -101,7 +102,7 @@ int	check_WE(t_data *data)
 	return (ft_putstr_fd("Error\nCUB3D : param WE not found.\n", 2), ERROR);
 }
 
-int	check_EA(t_data *data)
+int	check_ea(t_data *data)
 {
 	int	i;
 	int	j;

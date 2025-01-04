@@ -6,20 +6,21 @@
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 15:12:25 by sben-tay          #+#    #+#             */
-/*   Updated: 2025/01/04 05:31:57 by sben-tay         ###   ########.fr       */
+/*   Updated: 2025/01/04 06:29:44 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	update_dejavu(char **file, int i, int j, bool *dejavu);
+static int	check_and_mark(char **file, int i, int j, bool *dejavu);
+static int	mark_dejavu(bool *dejavu, int index);
 
 bool	valid_char_map(char *str)
 {
 	int	i;
 
 	i = 0;
-	while(str[i])
+	while (str[i])
 	{
 		if (str[i + 1] && str[i] == 'E' && str[i + 1] == 'A')
 			return (false);
@@ -33,7 +34,8 @@ bool	valid_char_map(char *str)
 			return (false);
 		if (str[i] == 'C')
 			return (false);
-		if (str[i] == '1' || str[i] == '0' || str[i] == '\0' || ft_isspace(str[i]))
+		if (str[i] == '1' || str[i] == '0' || str[i] == '\0'
+			|| ft_isspace(str[i]))
 			return (true);
 		i++;
 	}
@@ -44,43 +46,45 @@ bool	valid_char_map(char *str)
 
 int	check_double_param(t_data *data)
 {
+	static bool	dejavu[6] = {false};
 	int			i;
 	int			j;
-	static bool	dejavu[256] = {false};
 
 	i = 0;
 	while (data->file[i])
 	{
 		j = 0;
-		while (data->file[i] && ft_isspace(data->file[i][j]))
+		while (data->file[i][j] && ft_isspace(data->file[i][j]))
 			j++;
-		if (dejavu[(unsigned char)data->file[i][j]])
-		{
-			return (ft_putstr_fd("Error\nCUB3D : double param detected!\n", 2), \
+		if (check_and_mark(data->file, i, j, dejavu) == ERROR)
+			return (ft_putstr_fd("Error\nCUB3D : double param detected!\n", 2),
 				ERROR);
-		}
-		if (update_dejavu(data->file, i, j, dejavu) == ERROR)
-			return (ERROR);
 		i++;
 	}
 	return (SUCCESS);
 }
 
-static int	update_dejavu(char **file, int i, int j, bool *dejavu)
+static int	check_and_mark(char **file, int i, int j, bool *dejavu)
 {
 	if (file[i][j] == 'N' && file[i][j + 1] == 'O')
-		dejavu['N'] = true;
-	else if (file[i][j] == 'S' && file[i][j + 1] == 'O')
-		dejavu['S'] = true;
-	else if (file[i][j] == 'W' && file[i][j + 1] == 'E')
-	{
-		dejavu['W'] = true;
-	}
-	else if (file[i][j] == 'E' && file[i][j + 1] == 'A')
-		dejavu['E'] = true;
-	else if (file[i][j] == 'F' && file[i][j + 1] == ' ')
-		dejavu['F'] = true;
-	else if (file[i][j] == 'C' && file[i][j + 1] == ' ')
-		dejavu['C'] = true;
+		return (mark_dejavu(dejavu, 0));
+	if (file[i][j] == 'S' && file[i][j + 1] == 'O')
+		return (mark_dejavu(dejavu, 1));
+	if (file[i][j] == 'W' && file[i][j + 1] == 'E')
+		return (mark_dejavu(dejavu, 2));
+	if (file[i][j] == 'E' && file[i][j + 1] == 'A')
+		return (mark_dejavu(dejavu, 3));
+	if (file[i][j] == 'F' && file[i][j + 1] == ' ')
+		return (mark_dejavu(dejavu, 4));
+	if (file[i][j] == 'C' && file[i][j + 1] == ' ')
+		return (mark_dejavu(dejavu, 5));
+	return (SUCCESS);
+}
+
+static int	mark_dejavu(bool *dejavu, int index)
+{
+	if (dejavu[index])
+		return (ERROR);
+	dejavu[index] = true;
 	return (SUCCESS);
 }
