@@ -70,6 +70,7 @@ int				check_format_rgb(char *str);
 int				check_double_param(t_data *data);
 bool			valid_char(char c);
 bool			valid_char_map(char *str);
+int				check_valid_map(t_data *data);
 
 void			ft_free_all(t_data *data);
 

@@ -6,7 +6,7 @@
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 06:19:45 by sben-tay          #+#    #+#             */
-/*   Updated: 2025/01/03 18:33:15 by sben-tay         ###   ########.fr       */
+/*   Updated: 2025/01/04 06:43:00 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	handle_parsing(int argc, char **argv, t_data *data)
 		return (ERROR);
 	if (get_map_in_tab(data) == ERROR)
 		return (ERROR);
-	// if (check_valid_map(data) == ERROR)
-	// 	return (ERROR);
+	if (check_valid_map(data) == ERROR)
+		return (ERROR);
 	return (SUCCESS);
 }
