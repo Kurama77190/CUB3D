@@ -6,7 +6,7 @@
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 10:12:03 by sben-tay          #+#    #+#             */
-/*   Updated: 2025/01/04 05:04:50 by sben-tay         ###   ########.fr       */
+/*   Updated: 2025/01/04 05:30:40 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,18 +70,26 @@ int	check_map(t_data *data)
 	int	j;
 
 	i = 0;
-	j = 0;
 	while (data->file[i])
+	{
+		j = 0;
+		while (data->file[i][j] && ft_isspace(data->file[i][j]))
+			j++;
+		if (data->file[i][j] == '1' || data->file[i][j] == '0')
+			break ;
 		i++;
-	i--;
-	while (data->file[i][0] == '\n')
-		i--;
-	while (ft_isspace(data->file[i][j]))
-		j++;
-	if (data->file[i][j] == '1' || data->file[i][j] == '0')
-		return (SUCCESS);
-	return (ft_putstr_fd("Error\nCUB3D : Map is missing or not last param\n", \
-			2), ERROR);
+	}
+	while (data->file[i])
+	{
+		j = 0;
+		while (data->file[i][j] && ft_isspace(data->file[i][j]))
+			j++;
+		if (!(valid_char_map(data->file[i] + j)))
+			return (ft_putstr_fd("Error\nCUB3D : Map is missing or not last param\n", \
+				2), ERROR);
+		i++;
+	}
+	return (SUCCESS);
 }
 
 int	check_format_rgb(char *str)
