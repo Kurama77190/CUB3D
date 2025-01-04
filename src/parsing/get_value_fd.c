@@ -6,7 +6,7 @@
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 12:54:39 by sben-tay          #+#    #+#             */
-/*   Updated: 2025/01/01 16:13:26 by sben-tay         ###   ########.fr       */
+/*   Updated: 2025/01/04 04:27:40 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,21 @@ static int	get_path_wall(t_data *data, char *line)
 		i++;
 	if (line[i] == 'N' && line[i + 1] == 'O')
 	{
-		data->parsing.no = ft_strtrim(line + 2, " ");
+		data->parsing.no = ft_strtrim_space(line + (i + 2));
 		return (SUCCESS);
 	}
 	else if (line[i] == 'S' && line[i + 1] == 'O')
 	{
-		data->parsing.so = ft_strtrim(line + 2, " ");
+		data->parsing.so = ft_strtrim_space(line + (i + 2));
 		return (SUCCESS);
 	}
 	else if (line[i] == 'W' && line[i + 1] == 'E')
 	{
-		data->parsing.we = ft_strtrim(line + 2, " ");
+		data->parsing.we = ft_strtrim_space(line + (i + 2));
 		return (SUCCESS);
 	}
 	else if (line[i] == 'E' && line[i + 1] == 'A')
-		return (data->parsing.ea = ft_strtrim(line + 2, " "), (SUCCESS));
+		return (data->parsing.ea = ft_strtrim_space(line + (i + 2)), (SUCCESS));
 	return (SUCCESS);
 }
 
@@ -64,14 +64,14 @@ static int	get_rgb(t_data *data, char *line)
 	i = 0;
 	while (line[i] && ft_isspace(line[i]))
 		i++;
-	if (line[i] == 'F' && line[i + 1] == ' ')
+	if (line[i] == 'F')
 	{
-		data->parsing.f = ft_strtrim(line + 1, " ");
+		data->parsing.f = ft_strtrim_space(line + (i + 1));
 		return (SUCCESS);
 	}
-	else if (line[i] == 'C' && line[i + 1] == ' ')
+	else if (line[i] == 'C')
 	{
-		data->parsing.c = ft_strtrim(line + 1, " ");
+		data->parsing.c = ft_strtrim_space(line + (i + 1));
 		return (SUCCESS);
 	}
 	return (SUCCESS);

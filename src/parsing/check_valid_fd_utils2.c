@@ -6,7 +6,7 @@
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 10:12:03 by sben-tay          #+#    #+#             */
-/*   Updated: 2025/01/01 15:10:59 by sben-tay         ###   ########.fr       */
+/*   Updated: 2025/01/04 05:04:50 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,11 @@ int	check_F(t_data *data)
 		j = 0;
 		while (data->file[i][j] && ft_isspace(data->file[i][j]))
 			j++;
-		if (data->file[i][j] == 'F' && data->file[i][j + 1] == ' ')
+		if (data->file[i][j] == 'F')
 		{
-			j += 2;
+			j ++;
 			while (data->file[i][j] && ft_isspace(data->file[i][j]))
 				j++;
-			if (data->file[i][j] == '\0' || data->file[i][j] == '\n')
-				return (ft_putstr_fd("Error\nCUB3D: param F color is missing\n", \
-						2), ERROR);
 			if (check_format_rgb(data->file[i] + j) == ERROR)
 				return (ft_putstr_fd("Error\nCUB3D: param F need RGB format\n", \
 						2), ERROR);
@@ -52,14 +49,11 @@ int	check_C(t_data *data)
 		j = 0;
 		while (data->file[i][j] && ft_isspace(data->file[i][j]))
 			j++;
-		if (data->file[i][j] == 'C' && data->file[i][j + 1] == ' ')
+		if (data->file[i][j] == 'C')
 		{
-			j += 2;
+			j++;
 			while (data->file[i][j] && ft_isspace(data->file[i][j]))
 				j++;
-			if (data->file[i][j] == '\0' || data->file[i][j] == '\n')
-				return (ft_putstr_fd("Error\nCUB3D: param C color is missing\n", \
-						2), ERROR);
 			if (check_format_rgb(data->file[i] + j) == ERROR)
 				return (ft_putstr_fd("Error\nCUB3D: param C need RGB format\n", \
 						2), ERROR);

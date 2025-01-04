@@ -36,7 +36,7 @@ typedef struct s_parsing
 	char		*lenth_maps;
 	int			pos_x;
 	int			pos_y;
-	char		direction;
+	char		*direction;
 }				t_parsing;
 
 typedef struct s_data

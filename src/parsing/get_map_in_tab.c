@@ -6,28 +6,17 @@
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 16:12:18 by sben-tay          #+#    #+#             */
-/*   Updated: 2025/01/03 18:51:49 by sben-tay         ###   ########.fr       */
+/*   Updated: 2025/01/03 21:03:42 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	alloc_and_cpy(t_data *data);
 static int	len_map(t_data *data);
 static bool	is_char_map(char c);
 static char	**first_line(t_data *data);
 
 int	get_map_in_tab(t_data *data)
-{
-	if (alloc_and_cpy(data) == ERROR)
-		return (ERROR);
-	// verifier que la map est valide
-	// verifier que la map est fermee
-	// verifier que la map est entouree de murs
-	return (SUCCESS);
-}
-
-static int	alloc_and_cpy(t_data *data)
 {
 	int		len;
 	char	**src;
