@@ -6,7 +6,7 @@
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 07:00:38 by sben-tay          #+#    #+#             */
-/*   Updated: 2025/01/04 05:50:38 by sben-tay         ###   ########.fr       */
+/*   Updated: 2025/01/04 06:40:40 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,10 @@ int main(int argc, char **argv)
 		ft_free_all(&data);
 		return (EXIT_FAILURE);
 	}
-	// print_tab(data.parsing.map);
 	print_value_fd(&data);
-	printf("parsing done\n");
+	printf("\n============= MAPS ===============\n");
+	print_tab(data.parsing.map);
+	printf("\n============= parsing done ! ===============\n");
 	ft_free_all(&data);
 	return (0);
 }
@@ -46,12 +47,13 @@ void	print_tab(char **str)
 
 void	print_value_fd(t_data *data)
 {
+	printf("\n");
+	printf("=========== VALUE FOLDER ============\n");
 	printf("NO: %s\n", data->parsing.no);
 	printf("SO: %s\n", data->parsing.so);
 	printf("WE: %s\n", data->parsing.we);
 	printf("EA: %s\n", data->parsing.ea);
-	// printf("C: %s\n", data->parsing.c);
-	// printf("F: %s\n", data->parsing.f);
+	printf("\n");
 	printf("r_c: %d\n", data->parsing.r_c);
 	printf("g_c: %d\n", data->parsing.g_c);
 	printf("b_c: %d\n", data->parsing.b_c);
@@ -64,3 +66,4 @@ void	print_value_fd(t_data *data)
 	// printf("direction: %s\n", data->parsing.direction);
 	
 }
+
