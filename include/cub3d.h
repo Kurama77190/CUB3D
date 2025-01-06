@@ -25,29 +25,31 @@
 
 typedef struct s_parsing
 {
-	char		*no;
-	char		*so;
-	char		*we;
-	char		*ea;
-	int			r_c;
-	int			g_c;
-	int			b_c;
-	int			r_f;
-	int			g_f;
-	int			b_f;
-	char		**map;
-	char		*height_maps;
-	char		*lenth_maps;
-	int			pos_x;
-	int			pos_y;
-	char		*direction;
-}				t_parsing;
+	char			*no;
+	char			*so;
+	char			*we;
+	char			*ea;
+	int				r_c;
+	int				g_c;
+	int				b_c;
+	int				r_f;
+	int				g_f;
+	int				b_f;
+	char			**map;
+	int				nb_pos; // calcul pas cette variable. un utils pour floodfill
+	char			*height_maps;
+	char			*lenth_maps;
+	int				pos_x;
+	int				pos_y;
+	char			direction;
+}					t_parsing;
 
 typedef struct s_data
 {
-	char		**file;
-	t_parsing	parsing;
-}				t_data;
+	char			**file;
+	t_parsing		parsing;
+}					t_data;
+
 
 
 //////////////////////////////////////////////////////////////////
@@ -71,8 +73,16 @@ int				check_double_param(t_data *data);
 bool			valid_char(char c);
 bool			valid_char_map(char *str);
 int				check_valid_map(t_data *data);
+int				replace_space_by_set(char **str, const char set);
+int				check_valid_map_char(t_data *data);
+char			**map_duplicate(char **map);
+int				flood_fill_map_and_island(t_data *data);
+bool			is_pos_char(char c);
+void			init_pos_S_N(t_data *data, char **map, int x, int y);
+void			init_pos_E_W(t_data *data, char **map, int x, int y);
 
 void			ft_free_all(t_data *data);
+void			print_tab(char **str);
 
 
 # endif

@@ -6,7 +6,7 @@
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 16:12:18 by sben-tay          #+#    #+#             */
-/*   Updated: 2025/01/04 06:30:13 by sben-tay         ###   ########.fr       */
+/*   Updated: 2025/01/04 07:01:02 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	get_map_in_tab(t_data *data)
 
 	len = len_map(data);
 	src = first_line(data);
-	data->parsing.map = malloc(sizeof(char *) * (len + 1));
+	data->parsing.map = malloc(sizeof(char *) * (len + 2));
 	if (data->parsing.map == NULL)
 		return (ERROR);
 	i = 0;

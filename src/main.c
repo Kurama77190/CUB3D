@@ -6,7 +6,7 @@
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 07:00:38 by sben-tay          #+#    #+#             */
-/*   Updated: 2025/01/04 06:40:40 by sben-tay         ###   ########.fr       */
+/*   Updated: 2025/01/06 09:23:42 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,10 @@ int main(int argc, char **argv)
 		ft_free_all(&data);
 		return (EXIT_FAILURE);
 	}
-	print_value_fd(&data);
-	printf("\n============= MAPS ===============\n");
-	print_tab(data.parsing.map);
+	// print_value_fd(&data);
+	// printf("\n============= MAPS ===============\n");
+	// print_tab(data.parsing.map);
+	printf("nb pos_direct_char : %d\n", data.parsing.nb_pos);
 	printf("\n============= parsing done ! ===============\n");
 	ft_free_all(&data);
 	return (0);

@@ -6,7 +6,7 @@
 #    By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/28 07:06:55 by sben-tay          #+#    #+#              #
-#    Updated: 2025/01/04 06:43:19 by sben-tay         ###   ########.fr        #
+#    Updated: 2025/01/04 08:41:50 by sben-tay         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,8 @@ BUILD = builder/
 SRC := src/main.c src/ft_free_all.c \
 	$(addprefix $(GNL), get_next_line.c get_next_line_utils.c) \
 	$(addprefix $(PARS), handle_parsing.c get_fd_in_tab.c get_value_fd.c check_valide_fd.c check_valid_fd_utils.c \
-	check_valid_fd_utils2.c check_valid_fd_utils3.c get_map_in_tab.c check_valid_map.c)
+	check_valid_fd_utils2.c check_valid_fd_utils3.c get_map_in_tab.c check_valid_map.c check_valid_map_utils.c flood_fill.c \
+	flood_fill_utils.c)
 
 SRC_TEST = test/main.c
 
