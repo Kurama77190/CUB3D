@@ -6,7 +6,7 @@
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 09:51:14 by sben-tay          #+#    #+#             */
-/*   Updated: 2025/01/04 06:27:13 by sben-tay         ###   ########.fr       */
+/*   Updated: 2025/01/06 15:48:13 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	check_valid_fd(t_data *data)
 		return (ERROR);
 	if (check_double_param(data) == ERROR)
 		return (ERROR);
-	if (check_map(data) == ERROR)
+	if (check_map_is_last_param(data) == ERROR)
 		return (ERROR);
 	return (SUCCESS);
 }

@@ -67,7 +67,7 @@ int				check_ea(t_data *data);
 int				check_we(t_data *data);
 int				check_so(t_data *data);
 int				check_no(t_data *data);
-int				check_map(t_data *data);
+int				check_map_is_last_param(t_data *data);
 int				check_format_rgb(char *str);
 int				check_double_param(t_data *data);
 bool			valid_char(char c);

@@ -6,7 +6,7 @@
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 10:12:03 by sben-tay          #+#    #+#             */
-/*   Updated: 2025/01/06 11:55:07 by sben-tay         ###   ########.fr       */
+/*   Updated: 2025/01/06 15:48:09 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	check_c(t_data *data)
 	return (ft_putendl_fd("Error\nParam C not found.", 2), ERROR);
 }
 
-int	check_map(t_data *data)
+int	check_map_is_last_param(t_data *data)
 {
 	int	i;
 	int	j;

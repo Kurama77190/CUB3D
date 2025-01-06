@@ -6,7 +6,7 @@
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 06:42:27 by sben-tay          #+#    #+#             */
-/*   Updated: 2025/01/06 13:28:22 by sben-tay         ###   ########.fr       */
+/*   Updated: 2025/01/06 16:47:11 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ int	check_valid_map(t_data *data)
 	// replace_space_by_set(data->parsing.map, '0');
 	if (get_size_map(data) == ERROR)
 		return (ERROR);
+	if (data->parsing.nb_pos == 0)
+	{
+		ft_putendl_fd("Error\nNo starting position.", 2);
+		return (ERROR);
+	}
 	return (SUCCESS);
 }
 
@@ -41,10 +46,11 @@ static int	get_size_map(t_data *data)
 		j = 0;
 		while (data->parsing.map[i][j])
 			j++;
+		if (j > data->parsing.lenth_maps)
+			data->parsing.lenth_maps = j;
 		i++;
 	}
-	data->parsing.height_maps = i * 64;
-	data->parsing.lenth_maps = j * 64;
+	data->parsing.height_maps = i;
 	if (!data->parsing.height_maps || !data->parsing.lenth_maps)
 	{
 		ft_putendl_fd("Error\nMap is empty.", 2);
