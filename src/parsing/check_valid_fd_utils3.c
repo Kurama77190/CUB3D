@@ -6,7 +6,7 @@
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 15:12:25 by sben-tay          #+#    #+#             */
-/*   Updated: 2025/01/04 06:29:44 by sben-tay         ###   ########.fr       */
+/*   Updated: 2025/01/06 11:55:16 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	check_double_param(t_data *data)
 		while (data->file[i][j] && ft_isspace(data->file[i][j]))
 			j++;
 		if (check_and_mark(data->file, i, j, dejavu) == ERROR)
-			return (ft_putstr_fd("Error\nCUB3D : double param detected!\n", 2),
+			return (ft_putendl_fd("Error\nDouble param detected!", 2),
 				ERROR);
 		i++;
 	}

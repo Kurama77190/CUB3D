@@ -6,7 +6,7 @@
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 08:40:45 by sben-tay          #+#    #+#             */
-/*   Updated: 2025/01/06 08:04:56 by sben-tay         ###   ########.fr       */
+/*   Updated: 2025/01/06 12:59:19 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,15 @@ char	**map_duplicate(char **map)
 	return (map_cpy);
 }
 
-
 int	count_zero(char **str)
 {
-	int i = 0;
-	int j = 0;
-	int count = 0;
+	int	i;
+	int	j;
+	int	count;
+
+	i = 0;
+	j = 0;
+	count = 0;
 	while (str[i])
 	{
 		j = 0;
@@ -57,7 +60,7 @@ int	count_zero(char **str)
 	return (count);
 }
 
-void	init_pos_S_N(t_data *data, char **map, int x, int y)
+void	init_pos_s_n(t_data *data, char **map, int x, int y)
 {
 	if (map[x][y] == 'N')
 	{
@@ -75,8 +78,7 @@ void	init_pos_S_N(t_data *data, char **map, int x, int y)
 	}
 }
 
-
-void	init_pos_E_W(t_data *data, char **map, int x, int y)
+void	init_pos_e_w(t_data *data, char **map, int x, int y)
 {
 	if (map[x][y] == 'E')
 	{

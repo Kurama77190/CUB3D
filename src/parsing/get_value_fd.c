@@ -6,7 +6,7 @@
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 12:54:39 by sben-tay          #+#    #+#             */
-/*   Updated: 2025/01/04 05:58:31 by sben-tay         ###   ########.fr       */
+/*   Updated: 2025/01/06 13:59:37 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static int	get_rgb(t_data *data, char *line, char **c, char **f);
 static int	get_path_wall(t_data *data, char *line);
 static int	get_int_rgb(t_data *data, char *c, char *f);
+static int	check_value_rgb(t_data *data);
 
 int	get_value_fd(t_data *data)
 {
@@ -37,6 +38,8 @@ int	get_value_fd(t_data *data)
 		return (ERROR);
 	ft_free((void **)&f_rgb);
 	ft_free((void **)&c_rgb);
+	if (check_value_rgb(data) == ERROR)
+		return (ERROR);
 	return (SUCCESS);
 }
 
@@ -106,5 +109,28 @@ static int	get_int_rgb(t_data *data, char *c, char *f)
 	data->parsing.g_c = ft_atoi(tab[1]);
 	data->parsing.b_c = ft_atoi(tab[2]);
 	free_split(tab);
+	return (SUCCESS);
+}
+
+static int	check_value_rgb(t_data *data)
+{
+	if (data->parsing.r_f < 0 || data->parsing.r_f > 255)
+		return (ft_putendl_fd("Error\nInvalid value for red in floor", 2),
+			ERROR);
+	if (data->parsing.g_f < 0 || data->parsing.g_f > 255)
+		return (ft_putendl_fd("Error\nInvalid value for green in floor", 2),
+			ERROR);
+	if (data->parsing.b_f < 0 || data->parsing.b_f > 255)
+		return (ft_putendl_fd("Error\nInvalid value for blue in floor", 2),
+			ERROR);
+	if (data->parsing.r_c < 0 || data->parsing.r_c > 255)
+		return (ft_putendl_fd("Error\nInvalid value for red in ceiling", 2),
+			ERROR);
+	if (data->parsing.g_c < 0 || data->parsing.g_c > 255)
+		return (ft_putendl_fd("Error\nInvalid value for green in ceiling", 2),
+			ERROR);
+	if (data->parsing.b_c < 0 || data->parsing.b_c > 255)
+		return (ft_putendl_fd("Error\nInvalid value for blue in ceiling", 2),
+			ERROR);
 	return (SUCCESS);
 }
