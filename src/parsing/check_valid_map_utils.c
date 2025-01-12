@@ -6,7 +6,7 @@
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 06:46:29 by sben-tay          #+#    #+#             */
-/*   Updated: 2025/01/06 13:24:56 by sben-tay         ###   ########.fr       */
+/*   Updated: 2025/01/07 09:12:22 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	replace_space_by_set(char **str, const char set)
 	return (SUCCESS);
 }
 
-int	check_valid_map_char(t_data *data)
+int	check_valid_map_char(t_game *data)
 {
 	int	i;
 	int	j;
@@ -74,7 +74,7 @@ int	check_valid_map_char(t_data *data)
 	return (SUCCESS);
 }
 
-int	check_space_in_map(t_data *data)
+int	check_space_in_map(t_game *data)
 {
 	int		i;
 	int		j;

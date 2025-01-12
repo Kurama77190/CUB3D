@@ -6,22 +6,25 @@
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 12:49:40 by sben-tay          #+#    #+#             */
-/*   Updated: 2025/01/04 05:58:48 by sben-tay         ###   ########.fr       */
+/*   Updated: 2025/01/12 14:27:12 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	ft_free_parsing(t_data *data);
+static void	ft_free_parsing(t_game *data);
+static void	ft_free_exec(t_game *data);
 
-void	ft_free_all(t_data *data)
+
+int	ft_free_all(t_game *data)
 {
 	ft_free_parsing(data);
-	// ft_free_exec(data);
+	ft_free_exec(data);
+	exit(0);
+	return (SUCCESS);
 }
 
-
-static void	ft_free_parsing(t_data *data)
+static void	ft_free_parsing(t_game *data)
 {
 	free_split(data->file);
 	ft_free((void **)&data->parsing.no);
@@ -31,7 +34,33 @@ static void	ft_free_parsing(t_data *data)
 	free_split(data->parsing.map);
 }
 
-// static void ft_free_exec(t_data *data)
-// {
-// 	// t'es fonction a liberer ici utilise ft_free((void **)&ptr); pour liberer la memoire
-// }
+static void	ft_free_exec(t_game *data)
+{
+	destroy_images_textures(data);
+	if (data->img)
+		mlx_destroy_image(data->mlx, data->img);
+	if (data->win && data->mlx)
+	{
+		mlx_clear_window(data->mlx, data->win);
+		mlx_destroy_window(data->mlx, data->win);
+	}
+	if (data->mlx)
+	{
+		mlx_loop_end(data->mlx);
+		mlx_destroy_display(data->mlx);
+		ft_free((void **)&data->mlx);
+	}
+}
+
+void	destroy_images_textures(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (i < 4)
+	{
+		if (game->textures[i].img_data)
+			mlx_destroy_image(game->mlx, game->textures[i].img_data);
+		i++;
+	}
+}

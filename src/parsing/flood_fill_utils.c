@@ -6,7 +6,7 @@
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 08:40:45 by sben-tay          #+#    #+#             */
-/*   Updated: 2025/01/06 12:59:19 by sben-tay         ###   ########.fr       */
+/*   Updated: 2025/01/07 08:47:38 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,37 +60,37 @@ int	count_zero(char **str)
 	return (count);
 }
 
-void	init_pos_s_n(t_data *data, char **map, int x, int y)
+void	init_pos_s_n(t_game *data, char **map, int x, int y)
 {
 	if (map[x][y] == 'N')
 	{
-		data->parsing.pos_x = x;
-		data->parsing.pos_y = y;
+		data->parsing.pos_x = (double)x;
+		data->parsing.pos_y = (double)y;
 		data->parsing.direction = 'N';
 		data->parsing.nb_pos++;
 	}
 	if (map[x][y] == 'S')
 	{
-		data->parsing.pos_x = x;
-		data->parsing.pos_y = y;
+		data->parsing.pos_x = (double)x;
+		data->parsing.pos_y = (double)y;
 		data->parsing.direction = 'S';
 		data->parsing.nb_pos++;
 	}
 }
 
-void	init_pos_e_w(t_data *data, char **map, int x, int y)
+void	init_pos_e_w(t_game *data, char **map, int x, int y)
 {
 	if (map[x][y] == 'E')
 	{
-		data->parsing.pos_x = x;
-		data->parsing.pos_y = y;
+		data->parsing.pos_x = (double)x;
+		data->parsing.pos_y = (double)y;
 		data->parsing.direction = 'E';
 		data->parsing.nb_pos++;
 	}
 	if (map[x][y] == 'W')
 	{
-		data->parsing.pos_x = x;
-		data->parsing.pos_y = y;
+		data->parsing.pos_x = (double)x;
+		data->parsing.pos_y = (double)y;
 		data->parsing.direction = 'W';
 		data->parsing.nb_pos++;
 	}

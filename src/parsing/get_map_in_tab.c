@@ -6,17 +6,17 @@
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 16:12:18 by sben-tay          #+#    #+#             */
-/*   Updated: 2025/01/04 07:01:02 by sben-tay         ###   ########.fr       */
+/*   Updated: 2025/01/06 17:14:54 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	len_map(t_data *data);
+static int	len_map(t_game *data);
 static bool	is_char_map(char c);
-static char	**first_line(t_data *data);
+static char	**first_line(t_game *data);
 
-int	get_map_in_tab(t_data *data)
+int	get_map_in_tab(t_game *data)
 {
 	int		len;
 	char	**src;
@@ -40,7 +40,7 @@ int	get_map_in_tab(t_data *data)
 	return (SUCCESS);
 }
 
-static int	len_map(t_data *data)
+static int	len_map(t_game *data)
 {
 	int	len;
 	int	i;
@@ -67,7 +67,7 @@ static int	len_map(t_data *data)
 	return (len);
 }
 
-static char	**first_line(t_data *data)
+static char	**first_line(t_game *data)
 {
 	int	i;
 	int	j;

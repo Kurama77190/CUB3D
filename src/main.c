@@ -5,77 +5,35 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/28 07:00:38 by sben-tay          #+#    #+#             */
-/*   Updated: 2025/01/06 12:52:21 by sben-tay         ###   ########.fr       */
+/*   Created: 2024/12/24 17:19:41 by idakhlao          #+#    #+#             */
+/*   Updated: 2025/01/09 11:09:35 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	print_tab(char **str);
-void	debbuger(t_data *data);
-
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_data	data;
+	t_game	game;
 
-	ft_memset(&data, 0, sizeof(t_data));
-	if (handle_parsing(argc, argv, &data) == ERROR)
+	ft_memset(&game, 0, sizeof(t_game));
+	if (main_parser(argc, argv, &game) == ERROR)
 	{
-		ft_free_all(&data);
-		return (EXIT_FAILURE);
+		ft_free_all(&game);
+		return (1);
 	}
-	debbuger(&data);	
-	ft_free_all(&data);
-	return (0);
-}
-
-
-void	print_tab(char **str)
-{
-	int i = 0;
-	while (str[i])
+	if (init_game(&game) == ERROR)
 	{
-		printf("%s", str[i]);
-		i++;
+		ft_free_all(&game);
+		return (1);
 	}
-	return ; 
+	mlx_hook(game.win, KeyPress, KeyPressMask, &handle_keypress, &game);
+	mlx_hook(game.win, 17, 0, &ft_free_all, &game);
+	mlx_mouse_move(game.mlx, game.win, WIDTH / 2, HEIGHT / 2);
+	mlx_mouse_hide(game.mlx, game.win);
+	mlx_loop_hook(game.mlx, raycasting, &game);
+	mlx_hook(game.win, KeyRelease, KeyReleaseMask, &handle_keyrelease, &game);
+	mlx_loop(game.mlx);
+	minimap(&game);
+	ft_free_all(&game);
 }
-
-void	debbuger(t_data *data)
-{
-	printf("\n============= MAPS ===============\n");
-	printf("\n");
-	printf("============= INITIAL MAP =================\n");
-	print_tab(data->parsing.map);
-	printf("\n");
-	printf("============= MAPS FOR EXEC ===============\n");
-	replace_space_by_set(data->parsing.map, '0');
-	print_tab(data->parsing.map);
-	printf("\n");
-	printf("=========== VALUE FOLDER ============\n");
-	printf("\n");
-	printf("NO: %s\n", data->parsing.no);
-	printf("SO: %s\n", data->parsing.so);
-	printf("WE: %s\n", data->parsing.we);
-	printf("EA: %s\n", data->parsing.ea);
-	printf("\n");
-	printf("r_c: %d\n", data->parsing.r_c);
-	printf("g_c: %d\n", data->parsing.g_c);
-	printf("b_c: %d\n", data->parsing.b_c);
-	printf("\n");
-	printf("r_f: %d\n", data->parsing.r_f);
-	printf("g_f: %d\n", data->parsing.g_f);
-	printf("b_f: %d\n", data->parsing.b_f);
-	printf("\n");
-	printf("=========== VALUE FOR EXEC ============\n");
-	printf("\n");
-	printf("pos_x: %d\n", data->parsing.pos_x);
-	printf("pos_y: %d\n", data->parsing.pos_y);
-	printf("height_maps: %d\n", data->parsing.height_maps);
-	printf("lenth_maps: %d\n", data->parsing.lenth_maps);
-	printf("direction: %c\n", data->parsing.direction);
-	printf("\n");
-	printf("\n============= parsing done ! ===============\n");
-}
-

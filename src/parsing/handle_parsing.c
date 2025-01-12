@@ -6,13 +6,13 @@
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 06:19:45 by sben-tay          #+#    #+#             */
-/*   Updated: 2025/01/06 13:56:47 by sben-tay         ###   ########.fr       */
+/*   Updated: 2025/01/09 10:22:56 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	handle_parsing(int argc, char **argv, t_data *data)
+int	handle_parsing(int argc, char **argv, t_game *data)
 {
 	if (argc != 2)
 	{
@@ -32,7 +32,23 @@ int	handle_parsing(int argc, char **argv, t_data *data)
 		return (ERROR);
 	if (get_map_in_tab(data) == ERROR)
 		return (ERROR);
+	if (check_valid_xpm(data) == ERROR)
+		return (ERROR);
 	if (check_valid_map(data) == ERROR)
 		return (ERROR);
 	return (SUCCESS);
+}
+
+int	check_file_existence(const char *path)
+{
+	int	fd;
+
+	fd = open(path, O_RDONLY);
+	if (fd < 0)
+	{
+		perror("Error opening file");
+		return (0);
+	}
+	close(fd);
+	return (1);
 }

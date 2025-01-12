@@ -6,16 +6,20 @@
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 06:42:27 by sben-tay          #+#    #+#             */
-/*   Updated: 2025/01/06 16:47:11 by sben-tay         ###   ########.fr       */
+/*   Updated: 2025/01/12 14:59:45 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	get_size_map(t_data *data);
 
-int	check_valid_map(t_data *data)
+static int	get_size_map(t_game *data);
+int			check_map_size(char **map);
+
+int	check_valid_map(t_game *data)
 {
+	if (check_map_size(data->parsing.map) == ERROR)
+		return (ERROR);
 	if (check_space_in_map(data) == ERROR)
 		return (ERROR);
 	if (check_valid_map_char(data) == ERROR)
@@ -24,7 +28,7 @@ int	check_valid_map(t_data *data)
 		return (ERROR);
 	if (flood_fill_map_and_island(data) == ERROR)
 		return (ERROR);
-	// replace_space_by_set(data->parsing.map, '0');
+	replace_space_by_set(data->parsing.map, '1');
 	if (get_size_map(data) == ERROR)
 		return (ERROR);
 	if (data->parsing.nb_pos == 0)
@@ -35,7 +39,7 @@ int	check_valid_map(t_data *data)
 	return (SUCCESS);
 }
 
-static int	get_size_map(t_data *data)
+static int	get_size_map(t_game *data)
 {
 	int	i;
 	int	j;
@@ -59,3 +63,21 @@ static int	get_size_map(t_data *data)
 	return (SUCCESS);
 }
 
+int	check_map_size(char **map)
+{
+	int	map_h;
+	int	map_w;
+
+	map_h = 0;
+	while (map[map_h])
+		map_h++;
+	map_w = ft_strlen(map[0]);
+
+	if (map_w * map_h > MAX_STACK_SIZE)
+	{
+		ft_putendl_fd("Error\n[WARNING!] Map too large for stack-based.", 2);
+		ft_putendl_fd("Please, reduce the size of the map.", 2);
+		return (ERROR);
+	}
+	return (SUCCESS);
+}

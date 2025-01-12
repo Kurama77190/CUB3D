@@ -6,7 +6,7 @@
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 15:12:25 by sben-tay          #+#    #+#             */
-/*   Updated: 2025/01/06 11:55:16 by sben-tay         ###   ########.fr       */
+/*   Updated: 2025/01/06 17:14:54 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ bool	valid_char_map(char *str)
 	return (false);
 }
 
-int	check_double_param(t_data *data)
+int	check_double_param(t_game *data)
 {
 	static bool	dejavu[6] = {false};
 	int			i;

@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/12/28 07:06:55 by sben-tay          #+#    #+#              #
-#    Updated: 2025/01/06 13:26:16 by sben-tay         ###   ########.fr        #
+#    Created: 2024/12/24 17:14:00 by idakhlao          #+#    #+#              #
+#    Updated: 2025/01/09 07:08:03 by sben-tay         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,18 +22,22 @@ LIBFT = ./external/LIBFT/
 GNL = ./external/GNL/src/
 DPRINTF = ./external/DPRINTF/
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3
-CPPFLAGS = -I./include -I./external/LIBFT/ -I./external/GNL/include -I./external/DPRINTF -I/usr/include -I$(MLX) -Imlx_linux
+CFLAGS = -Wall -Wextra -Werror -g3 -I./include
+CPPFLAGS = -I./external/LIBFT/ -I./external/GNL/include -I./external/DPRINTF -I/usr/include -I$(MLX) -Imlx_linux
 LDFLAGS = -L$(LIBFT) -lft -L$(DPRINTF) -lftprintf -L$(MLX) -lmlx -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -lbsd
 PARS  = src/parsing/
+EXEC = src/exec/
 BUILD = builder/
 
 #=================================================__SRC__OF__PROJECT__=============================================================================
 SRC := src/main.c src/ft_free_all.c \
+	$(addprefix $(EXEC), raycasting.c raycasting_utils.c calc.c movement.c texture.c handle_keys.c minimap.c movement_utils.c \
+	initializing.c init_img_wall.c init_player.c init_mlx.c) \
 	$(addprefix $(GNL), get_next_line.c get_next_line_utils.c) \
 	$(addprefix $(PARS), handle_parsing.c get_fd_in_tab.c get_value_fd.c check_valide_fd.c check_valid_fd_utils.c \
 	check_valid_fd_utils2.c check_valid_fd_utils3.c get_map_in_tab.c check_valid_map.c check_valid_map_utils.c flood_fill.c \
-	flood_fill_utils.c check_first_last_line.c)
+	flood_fill_utils.c check_first_last_line.c main_parser.c check_valid_xpm.c)
+
 
 SRC_TEST = test/main.c
 
@@ -41,7 +45,6 @@ $(shell mkdir -p $(BUILD))
 
 OBJ := $(SRC:%.c=$(BUILD)%.o)
 
-OBJ_TEST := $(SRC_TEST:%.c=$(BUILD)%.o)
 #OBJ_BNS = $(SRC_BNS:%.c=$(BUILD)%.o)
 #==================================================================================================================================================
 
@@ -56,6 +59,14 @@ YELLOW = \033[0;33m
 MAGENTA = \033[0;35m
 BLANC = \033[0;37m
 
+SUNSET1 = \033[38;5;201m # Magenta clair
+SUNSET2 = \033[38;5;206m # Rose chaud
+SUNSET3 = \033[38;5;211m # Violet moyen
+SUNSET4 = \033[38;5;216m # Orange tropical
+SUNSET5 = \033[38;5;221m # Jaune orangé
+SUNSET6 = \033[38;5;208m # Jaune brillant
+
+
 all:	$(NAME)
 
 $(NAME): $(OBJ)
@@ -63,8 +74,14 @@ $(NAME): $(OBJ)
 
 #==================================ASCII_MOD_COMPILATION==================================
 
-	@echo "$(GREEN)"
 
+	@echo "$(SUNSET1)██████╗░██████╗░░█████╗░░░░░░██╗███████╗░█████╗░████████╗  ██╗  ░█████╗░██╗░░░██╗██████╗░██████╗░██████╗░$(NC)"
+	@echo "$(SUNSET1)██╔══██╗██╔══██╗██╔══██╗░░░░░██║██╔════╝██╔══██╗╚══██╔══╝  ╚═╝  ██╔══██╗██║░░░██║██╔══██╗╚════██╗██╔══██╗$(NC)"
+	@echo "$(SUNSET2)██████╔╝██████╔╝██║░░██║░░░░░██║█████╗░░██║░░╚═╝░░░██║░░░  ░░░  ██║░░╚═╝██║░░░██║██████╦╝░█████╔╝██║░░██║$(NC)"
+	@echo "$(SUNSET3)██╔═══╝░██╔══██╗██║░░██║██╗░░██║██╔══╝░░██║░░██╗░░░██║░░░  ░░░  ██║░░██╗██║░░░██║██╔══██╗░╚═══██╗██║░░██║$(NC)"
+	@echo "$(SUNSET4)██║░░░░░██║░░██║╚█████╔╝╚█████╔╝███████╗╚█████╔╝░░░██║░░░  ██╗  ╚█████╔╝╚██████╔╝██████╦╝██████╔╝██████╔╝$(NC)"
+	@echo "$(SUNSET5)╚═╝░░░░░╚═╝░░╚═╝░╚════╝░░╚════╝░╚══════╝░╚════╝░░░░╚═╝░░░  ╚═╝  ░╚════╝░░╚═════╝░╚═════╝░╚═════╝░╚═════╝░$(NC)"
+	@echo "$(GREEN)"
 	@echo -n "Compilation progress: ["
 	@for i in $$(seq 0.1 50); do \
 		sleep 0.02; \
@@ -81,10 +98,6 @@ $(NAME): $(OBJ)
 	@echo "Done !$(BLANC)"
 
 #=============================================================================================
-
-test: $(OBJ_TEST)
-	@$(MAKE) $(MAKEFLAGS) -C $(LIBFT) bonus
-	@$(CC) $(OBJ_TEST) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -L$(LIBFT) -lft -o $(NAME)
 
 %.o:%.c
 	@$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@

@@ -6,13 +6,13 @@
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 10:12:03 by sben-tay          #+#    #+#             */
-/*   Updated: 2025/01/06 15:48:09 by sben-tay         ###   ########.fr       */
+/*   Updated: 2025/01/06 17:14:54 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	check_f(t_data *data)
+int	check_f(t_game *data)
 {
 	int	i;
 	int	j;
@@ -38,7 +38,7 @@ int	check_f(t_data *data)
 	return (ft_putendl_fd("Error\nParam F not found.", 2), ERROR);
 }
 
-int	check_c(t_data *data)
+int	check_c(t_game *data)
 {
 	int	i;
 	int	j;
@@ -64,7 +64,7 @@ int	check_c(t_data *data)
 	return (ft_putendl_fd("Error\nParam C not found.", 2), ERROR);
 }
 
-int	check_map_is_last_param(t_data *data)
+int	check_map_is_last_param(t_game *data)
 {
 	int	i;
 	int	j;
@@ -116,7 +116,7 @@ int	check_format_rgb(char *str)
 	return (SUCCESS);
 }
 
-int	check_invalid_param(t_data *data)
+int	check_invalid_param(t_game *data)
 {
 	int	i;
 	int	j;

@@ -6,15 +6,16 @@
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 08:20:41 by sben-tay          #+#    #+#             */
-/*   Updated: 2025/01/06 13:36:07 by sben-tay         ###   ########.fr       */
+/*   Updated: 2025/01/12 14:37:56 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-bool	flood_fill(char **map, int x, int y, t_data *data);
 
-int	flood_fill_map_and_island(t_data *data)
+bool	flood_fill(char **map, int x, int y, t_game *data);
+
+int	flood_fill_map_and_island(t_game *data)
 {
 	char	**map;
 	int		x;
@@ -42,7 +43,7 @@ int	flood_fill_map_and_island(t_data *data)
 	return (SUCCESS);
 }
 
-bool	flood_fill(char **map, int x, int y, t_data *data)
+bool	flood_fill(char **map, int x, int y, t_game *data)
 {
 	int	res;
 
@@ -69,3 +70,4 @@ bool	flood_fill(char **map, int x, int y, t_data *data)
 	res = flood_fill(map, x, y + 1, data);
 	return (res);
 }
+

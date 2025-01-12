@@ -6,16 +6,16 @@
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 07:37:10 by sben-tay          #+#    #+#             */
-/*   Updated: 2025/01/04 06:27:44 by sben-tay         ###   ########.fr       */
+/*   Updated: 2025/01/06 18:12:43 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	alloc_tab_fd(t_data *param, char *file);
-static int	get_file_in_tab(t_data *param, int fd);
+static int	alloc_tab_fd(t_game *param, char *file);
+static int	get_file_in_tab(t_game *param, int fd);
 
-int	get_fd_in_tab(char *file, t_data *data)
+int	get_fd_in_tab(char *file, t_game *data)
 {
 	int	fd;
 
@@ -36,7 +36,7 @@ int	get_fd_in_tab(char *file, t_data *data)
 	return (SUCCESS);
 }
 
-static int	alloc_tab_fd(t_data *param, char *file)
+static int	alloc_tab_fd(t_game *param, char *file)
 {
 	size_t	len;
 
@@ -47,7 +47,7 @@ static int	alloc_tab_fd(t_data *param, char *file)
 	return (SUCCESS);
 }
 
-static int	get_file_in_tab(t_data *param, int fd)
+static int	get_file_in_tab(t_game *param, int fd)
 {
 	int	i;
 

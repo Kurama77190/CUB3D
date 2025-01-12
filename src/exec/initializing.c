@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_valide_fd.c                                  :+:      :+:    :+:   */
+/*   initializing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/01 09:51:14 by sben-tay          #+#    #+#             */
-/*   Updated: 2025/01/06 17:14:54 by sben-tay         ###   ########.fr       */
+/*   Created: 2025/01/07 09:57:04 by sben-tay          #+#    #+#             */
+/*   Updated: 2025/01/09 10:33:35 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	check_invalid_param(t_game *data);
-
-int	check_valid_fd(t_game *data)
+int	init_game(t_game *game)
 {
-	if (check_no(data) == ERROR)
+	game->map.map_w = game->parsing.lenth_maps;
+	game->map.map_h = game->parsing.height_maps;
+	game->map.map = game->parsing.map;
+	if (init_mlx(game) == ERROR)
 		return (ERROR);
-	if (check_so(data) == ERROR)
+	if (init_player(game) == ERROR)
 		return (ERROR);
-	if (check_we(data) == ERROR)
-		return (ERROR);
-	if (check_ea(data) == ERROR)
-		return (ERROR);
-	if (check_f(data) == ERROR)
-		return (ERROR);
-	if (check_c(data) == ERROR)
-		return (ERROR);
-	if (check_invalid_param(data) == ERROR)
-		return (ERROR);
-	if (check_double_param(data) == ERROR)
-		return (ERROR);
-	if (check_map_is_last_param(data) == ERROR)
+	if (init_textures_wall(game) == ERROR)
 		return (ERROR);
 	return (SUCCESS);
 }

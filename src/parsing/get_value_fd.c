@@ -6,18 +6,18 @@
 /*   By: sben-tay <sben-tay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 12:54:39 by sben-tay          #+#    #+#             */
-/*   Updated: 2025/01/06 13:59:37 by sben-tay         ###   ########.fr       */
+/*   Updated: 2025/01/06 17:14:54 by sben-tay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	get_rgb(t_data *data, char *line, char **c, char **f);
-static int	get_path_wall(t_data *data, char *line);
-static int	get_int_rgb(t_data *data, char *c, char *f);
-static int	check_value_rgb(t_data *data);
+static int	get_rgb(t_game *data, char *line, char **c, char **f);
+static int	get_path_wall(t_game *data, char *line);
+static int	get_int_rgb(t_game *data, char *c, char *f);
+static int	check_value_rgb(t_game *data);
 
-int	get_value_fd(t_data *data)
+int	get_value_fd(t_game *data)
 {
 	int		i;
 	char	*c_rgb;
@@ -43,7 +43,7 @@ int	get_value_fd(t_data *data)
 	return (SUCCESS);
 }
 
-static int	get_path_wall(t_data *data, char *line)
+static int	get_path_wall(t_game *data, char *line)
 {
 	int	i;
 
@@ -70,7 +70,7 @@ static int	get_path_wall(t_data *data, char *line)
 	return (SUCCESS);
 }
 
-static int	get_rgb(t_data *data, char *line, char **C_RGB, char **F_RGB)
+static int	get_rgb(t_game *data, char *line, char **C_RGB, char **F_RGB)
 {
 	int	i;
 
@@ -91,7 +91,7 @@ static int	get_rgb(t_data *data, char *line, char **C_RGB, char **F_RGB)
 	return (SUCCESS);
 }
 
-static int	get_int_rgb(t_data *data, char *c, char *f)
+static int	get_int_rgb(t_game *data, char *c, char *f)
 {
 	char	**tab;
 
@@ -112,7 +112,7 @@ static int	get_int_rgb(t_data *data, char *c, char *f)
 	return (SUCCESS);
 }
 
-static int	check_value_rgb(t_data *data)
+static int	check_value_rgb(t_game *data)
 {
 	if (data->parsing.r_f < 0 || data->parsing.r_f > 255)
 		return (ft_putendl_fd("Error\nInvalid value for red in floor", 2),
