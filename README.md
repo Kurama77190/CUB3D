@@ -13,13 +13,11 @@ Cub3D est un projet de l'école **42**, inspiré par le jeu classique **Wolfenst
 1. [À propos du projet](#à-propos-du-projet)
 2. [Ce que le projet nous apprend](#ce-que-le-projet-nous-apprend)
 3. [Comment fonctionne le projet](#comment-fonctionne-le-projet)
-4. [Prérequis](#prérequis)
-5. [Installation](#installation)
-6. [Utilisation](#utilisation)
-7. [Gameplay](#gameplay)
-8. [Structure du projet](#structure-du-projet)
-9. [Contributions](#contributions)
-10. [Licence](#licence)
+4. [Installation](#installation)
+5. [Utilisation](#utilisation)
+6. [Gameplay](#gameplay)
+7. [Prérequis](#prérequis)
+8. [Licence](#licence)
 
 ---
 
@@ -113,3 +111,8 @@ Pour exécuter Cub3D, vous devez avoir :
   ```bash
   sudo apt update
   sudo apt install build-essential libx11-dev libxext-dev libbsd-dev libxpm-dev
+
+## 📝 Licence
+
+Ce projet est sous licence [MIT](https://opensource.org/licenses/MIT).
+
